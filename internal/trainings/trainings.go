@@ -1,26 +1,27 @@
 package trainings
 
-import(
-	"time"
-	"github.com/AnnaVlas05/fictional-train/internal/personaldata"
-	"github.com/AnnaVlas05/fictional-train/internal/spentenergy"
+import (
+	"errors"
+	"fmt"
 	"strconv"
 	"strings"
-	"fmt"
-	"errors"
+	"time"
+
+	"github.com/AnnaVlas05/fictional-train/internal/personaldata"
+	"github.com/AnnaVlas05/fictional-train/internal/spentenergy"
 )
 
 type Training struct {
 	// TODO: добавить поля
-	Steps int
+	Steps        int
 	TrainingType string
-	Duration time.Duration
+	Duration     time.Duration
 	personaldata.Personal
 }
 
 func (t *Training) Parse(datastring string) (err error) {
 	// TODO: реализовать функцию
-parts := strings.Split(datastring, ",")
+	parts := strings.Split(datastring, ",")
 	if len(parts) != 3 {
 		return errors.New("неверный формат строки: ожидалось 3 элемента")
 	}
